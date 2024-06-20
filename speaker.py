@@ -4,6 +4,7 @@ import pywhatkit
 import datetime
 import wikipedia
 import pyjokes
+import pyautogui
 
 engine = pyttsx3.init()
 voices = engine.getProperty('voices')
@@ -60,6 +61,18 @@ def RunAlexa():
         joke = pyjokes.get_joke()
         print(joke)
         speak(joke)
+    elif "set the volume to " in command:
+        volume = command.replace("set the volume to ", "")
+        if int(volume) >= 0 and int(volume) <= 100:
+            pyautogui.press("volumeup" if volume > 50 else "volumedown")
+            speak("volume set to " + volume)
+    elif "set the brightness to " in command:
+        brightness = command.replace("set the brightness to ", "")
+        if int(brightness) >= 0 and int(brightness) <= 100:
+            pyautogui.press("volumeup" if brightness > 50 else "volumedown")
+            speak("brightness set to " + brightness)
+            
+
     
 
 while True:
