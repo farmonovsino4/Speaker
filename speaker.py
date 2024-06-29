@@ -5,6 +5,7 @@ import datetime
 import wikipedia
 import pyjokes
 import pyautogui
+import os
 
 engine = pyttsx3.init()
 voices = engine.getProperty('voices')
@@ -71,7 +72,15 @@ def RunAlexa():
         if int(brightness) >= 0 and int(brightness) <= 100:
             pyautogui.press("volumeup" if brightness > 50 else "volumedown")
             speak("brightness set to " + brightness)
-            
+    elif 'open projects folder' in command:
+        speak("opening projects folder")
+        os.startfile("C:\\Users\\User\\Documents\\projects")
+    elif 'open downloads folder' in command:
+        speak("opening downloads folder")
+        os.startfile("C:\\Users\\User\\Downloads")
+    elif 'open documents folder' in command:
+        speak("opening documents folder")
+        os.startfile("C:\\Users\\User\\Documents")
 
     
 
